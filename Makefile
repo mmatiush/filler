@@ -4,7 +4,7 @@ SRC_DIR :=		./src/
 OBJ_DIR :=		./obj/
 INC_DIR :=		./libft/inc/
 
-SRC :=			mmatiush.filler.c fil_additional_func.c fil_parse.c
+SRC :=			mmatiush.filler.c fil_additional_func.c fil_parse.c solve_algo.c
 
 OBJ :=			$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
@@ -20,7 +20,7 @@ $(NAME): $(OBJ)
 	@$(CC) -o $(NAME) $(CC_FLAGS) $(OBJ) $(LIBFT) -I $(INC_DIR)
 	@echo "Compiling [ $(NAME) ]"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR)filler.h
 	@$(CC) -c $< -o $@ $(CC_FLAGS) -I $(INC_DIR)
 	@echo "Linking" [ $< ]
 

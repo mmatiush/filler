@@ -21,7 +21,7 @@ typedef struct			s_p_coords
 {
 	int					x;
 	int					y;
-	struct	s_coords	*next;
+	struct	s_p_coords	*next;
 }						t_p_coords;
 
 typedef struct	s_fil_node
@@ -35,11 +35,21 @@ typedef struct	s_fil_node
 	int 		p_x;
 	int			p_y;
 	t_p_coords	*p_coords;
+	t_p_coords	*valid_coords;
 }				t_fil_node;
 
+/*
+** Parsing and writing board and piece to the struct.
+*/
 
 void	get_fil_player_char(t_fil_node	*fil);
 void	fill_out_fil(t_fil_node	*fil);
+
+/*
+** Checking all valid possible coordinates for return. 
+*/
+
+int		get_piece_coordintaes(char **piece, int x, int y, t_p_coords *coords);
 
 /*
 ** Additional functions
@@ -47,5 +57,6 @@ void	fill_out_fil(t_fil_node	*fil);
 
 void	fil_print_board(t_fil_node	*fil);
 void	fil_print_piece(t_fil_node	*fil);
+void	fil_print_piece_coords(t_p_coords *coords);
 
 #endif

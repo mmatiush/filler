@@ -14,3 +14,13 @@ void fil_print_piece(t_fil_node	*fil)
 	while (fil->piece[i])
 		ft_printf("%s\n", fil->piece[i++]);
 }
+
+void	fil_print_piece_coords(t_p_coords *coords)
+{
+	while (coords)
+	{
+		ft_printf("[y - %d][x - %d]\n", coords->y, coords->x);
+		coords = coords->next;
+	}
+	ft_printf("\n");
+}
