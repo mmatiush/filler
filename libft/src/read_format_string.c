@@ -40,7 +40,7 @@ static void	read_wildcard(t_flags *f)
 	{
 		n = va_arg(f->ap, int);
 		(n < 0) ? f->minus = 1 : 0;
-		f->width = (n < 0) ? -(unsigned)n : n;
+		f->width = (n < 0) ? -(unsigned)n : (unsigned)n;
 	}
 	else
 	{

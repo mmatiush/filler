@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <inttypes.h>
 # define BUFF_SIZE 10
 # define FD_NUM 4864
 
