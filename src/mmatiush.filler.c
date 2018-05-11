@@ -1,13 +1,13 @@
 #include "libft.h"
 #include "filler.h"
 
-int		get_piece_coordintaes(char **piece, int x, int y, t_coords *coords)
+int		get_piece_coordintaes(char **piece, int x, int y, t_p_coords *coords)
 {
 	int i;
 	int j;
 
 	i = 0;
-	t_coords *temp;
+	t_p_coords *temp;
 	while (i < y)
 	{
 		j = 0;
@@ -15,7 +15,7 @@ int		get_piece_coordintaes(char **piece, int x, int y, t_coords *coords)
 		{
 			if (piece[i][j] == '*')
 			{
-				coords->next = (t_coords*)malloc(sizeof(t_coords));
+				coords->next = (t_p_coords*)malloc(sizeof(t_p_coords));
 				temp = coords;
 				coords->y = i;
 				coords->x = j;
@@ -30,7 +30,7 @@ int		get_piece_coordintaes(char **piece, int x, int y, t_coords *coords)
 	return (1);
 }
 
-void	fil_print_piece_coords(t_coords *coords)
+void	fil_print_piece_coords(t_p_coords *coords)
 {
 	while (coords)
 	{
@@ -39,19 +39,47 @@ void	fil_print_piece_coords(t_coords *coords)
 	}
 }
 
+int	check_coord_validity(char **board, int x, int y, t_p_coords *coords)
+{
+	while (coords)
+	{
+		if (board[coords->y + y][coords->x + x])
+	}
+}
+
+void	get_valid_placing_coordinates(char **board, int x, int y, t_p_coords *coords)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < x)
+	{
+		j = 0;
+		while (j < y)
+		{
+			if (check_coord_validity(board, j, i, coords))
+				add_valid_coord();
+			j++;
+		}
+		i++;
+	}
+}
+
 int		main(void)
 {
 	t_fil_node	fil;
 
-	fil.coords = (t_coords*)malloc(sizeof(t_coords));
+	fil.p_coords = (t_p_coords*)malloc(sizeof(t_p_coords));
 	get_fil_player_char(&fil);
 	fill_out_fil(&fil);
 
 	//fil_print_board(&fil);
 	fil_print_piece(&fil);
-	if (!(get_piece_coordintaes(fil.piece, fil.p_x, fil.p_y, fil.coords)))
+	if (!(get_piece_coordintaes(fil.piece, fil.p_x, fil.p_y, fil.p_coords)))
 		return (0);
-	fil_print_piece_coords(fil.coords);
+	get_valid_placing_coordinates(fil.board, fil.b_x - fil.p_x, fil.b_y - fil.p_y, fil.p_coords);
+	//fil_print_piece_coords(fil.p_coords);
 	// ft_printf("c_my = %c\n", fil.c_my);
 	// ft_printf("b_x =  %d\n", fil.b_x);
 	// ft_printf("b_y =  %d\n", fil.b_y);

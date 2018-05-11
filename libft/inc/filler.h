@@ -17,12 +17,12 @@
 **	List with coordinates of the piece
 */
 
-typedef struct			s_coords
+typedef struct			s_p_coords
 {
 	int					x;
 	int					y;
 	struct	s_coords	*next;
-}						t_coords;
+}						t_p_coords;
 
 typedef struct	s_fil_node
 {
@@ -34,7 +34,7 @@ typedef struct	s_fil_node
 	char		**piece;
 	int 		p_x;
 	int			p_y;
-	t_coords	*coords;
+	t_p_coords	*p_coords;
 }				t_fil_node;
 
 
