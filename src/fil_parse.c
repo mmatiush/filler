@@ -37,7 +37,7 @@ static void	init_fil_board(t_fil_node	*fil)
 	int		i;
 
 	i = 0;
-	fil->board = (char**)malloc(sizeof(char*) * fil->b_y + 1);
+	fil->board = (char**)malloc(sizeof(char*) * (fil->b_y + 1));
 	get_next_line(STDIN_FILENO, &buff);
 	free(buff);
 	while (i < fil->b_y)
@@ -55,7 +55,7 @@ static void	init_fil_piece(t_fil_node *fil)
 	int		i;
 
 	i = 0;
-	fil->piece = (char**)malloc(sizeof(char*) * fil->p_y + 1);
+	fil->piece = (char**)malloc(sizeof(char*) * (fil->p_y + 1));
 	while (i < fil->p_y)
 	{
 		get_next_line(STDIN_FILENO, &buff);

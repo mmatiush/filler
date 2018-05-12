@@ -60,7 +60,7 @@ void	get_valid_placing_coordinates(t_fil_node *fil)
 	}
 }
 
-void	delete_fil_struct(t_p_coords *coords)
+void	delete_coords_struct(t_p_coords *coords)
 {
 	if (!coords)
 		return ;
@@ -76,18 +76,22 @@ void	free_str_arr(char **str)
 	i = 0;
 	while (str[i] != NULL)
 	{
-		free(str[i] = NULL);
+		free(str[i]);
 		i++;
 	}
 	free(str);
 }
 
-void	delete_fil_struct(t_fil_node* fil)
+void	delete_fil_struct(t_fil_node *fil)
 {
 	delete_coords_struct(fil->p_coords);
+	fil->p_coords = NULL;
 	delete_coords_struct(fil->valid_coords);
+	fil->valid_coords = NULL;
 	free_str_arr(fil->board);
+	fil->board = NULL;
 	free_str_arr(fil->piece);
+	fil->piece = NULL;
 	fil->c_my = '\0';
 	fil->c_enemy = '\0';
 	fil->b_x = 0;
@@ -107,13 +111,10 @@ int		main(void)
 
 	// fil_print_board(&fil);
 	// fil_print_piece(&fil);
-	while (1)
-	{
-		if (!(get_piece_coordintaes(fil.piece, fil.p_x, fil.p_y, fil.p_coords)))
-			return (0);
-		get_valid_placing_coordinates(&fil);
-		ft_printf("%d, %d", fil.valid_coords->y, fil.valid_coords->x);
-	}
+	if (!(get_piece_coordintaes(fil.piece, fil.p_x, fil.p_y, fil.p_coords)))
+		return (0);
+	get_valid_placing_coordinates(&fil);
+	//ft_printf("%d, %d", fil.valid_coords->y, fil.valid_coords->x);
 	delete_fil_struct(&fil);
 	//fil_print_piece_coords(fil.valid_coords);
 	//ft_printf("c_my = %c\n", fil.c_my);
@@ -121,6 +122,5 @@ int		main(void)
 	// ft_printf("b_y =  %d\n", fil.b_y);
 	// ft_printf("p_x =  %d\n", fil.p_x);
 	// ft_printf("p_y =  %d\n", fil.p_y);
-	// system ("leaks --quiet mmatiush.filler");
 	return (0);
 }
