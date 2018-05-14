@@ -95,7 +95,7 @@ int		main(void)
 			return (0);
 		if (!(get_valid_placing_coordinates(&fil)))
 			return (0);
-		// ft_printf("Y_SHIFT - %d\n", fil.p_y_shift);
+		ft_printf("Y_SHIFT - %d\n", fil.p_y_shift);
 		if (fil.valid_coords)
 			ft_printf("%d %d\n", fil.valid_coords->x, fil.valid_coords->y);
 		else
