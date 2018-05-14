@@ -44,4 +44,14 @@ void	delete_fil_struct(t_fil_struct *fil)
 	fil->b_y = 0;
 	fil->p_x = 0;
 	fil->p_y = 0;
+	fil->p_x_shift = 0;
+	fil->p_y_shift = 0;
+}
+
+void	null_fil_struct(t_fil_struct *fil)
+{
+		fil->valid_coords = NULL;
+		fil->p_coords = NULL;
+		fil->board = NULL;
+		fil->piece = NULL;
 }

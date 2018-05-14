@@ -1,10 +1,10 @@
 #include "libft.h"
 #include "filler.h"
 
-int	check_if_coord_valid(t_fil_struct *fil, int j, int i)
+int		check_if_coord_valid(t_fil_struct *fil, int j, int i)
 {
-	int my_point_flag;
-	t_coords_node *p_coords;
+	int				my_point_flag;
+	t_coords_node	*p_coords;
 
 	my_point_flag = 0;
 	p_coords = fil->p_coords;
@@ -57,7 +57,7 @@ int		get_piece_coordintaes(t_fil_struct *fil, int x, int y)
 	return (1);
 }
 
-int	get_valid_placing_coordinates(t_fil_struct *fil)
+int		get_valid_placing_coordinates(t_fil_struct *fil)
 {
 	int i;
 	int j;
@@ -84,18 +84,18 @@ int	get_valid_placing_coordinates(t_fil_struct *fil)
 int		main(void)
 {
 	t_fil_struct	fil;
+
+	null_fil_struct(&fil);
 	get_fil_player_char(&fil);
 	while (1)
 	{
-		fil.valid_coords = NULL;
-		fil.p_coords = NULL;
-		delete_fil_struct(&fil);
 		if (!(fill_out_fil_struct(&fil)))
 			return (0);
 		if (!(get_piece_coordintaes(&fil, fil.p_x, fil.p_y)))
 			return (0);
 		if (!(get_valid_placing_coordinates(&fil)))
 			return (0);
+		// ft_printf("Y_SHIFT - %d\n", fil.p_y_shift);
 		if (fil.valid_coords)
 			ft_printf("%d %d\n", fil.valid_coords->x, fil.valid_coords->y);
 		else

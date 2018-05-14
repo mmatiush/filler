@@ -34,6 +34,8 @@ typedef struct		s_fil_struct
 	char			**piece;
 	int 			p_x;
 	int				p_y;
+	int 			p_x_shift;
+	int 			p_y_shift;
 	t_coords_node	*p_coords;
 	t_coords_node	*valid_coords;
 }					t_fil_struct;
@@ -59,6 +61,7 @@ void	fil_print_board(t_fil_struct *fil);
 void	fil_print_piece(t_fil_struct *fil);
 void	fil_print_coords_list(t_coords_node *coords);
 void	delete_coords_struct(t_coords_node **coords);
+void	null_fil_struct(t_fil_struct *fil);
 void	delete_fil_struct(t_fil_struct *fil);
 
 #endif
