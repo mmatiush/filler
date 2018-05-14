@@ -4,7 +4,7 @@ SRC_DIR :=		./src/
 OBJ_DIR :=		./obj/
 INC_DIR :=		./libft/inc/
 
-SRC :=			mmatiush.filler.c fil_additional_func.c fil_parse.c solve_algo.c
+SRC :=			mmatiush.filler.c fil_additional_func.c fil_parse.c
 
 OBJ :=			$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

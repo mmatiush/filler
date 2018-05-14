@@ -2,7 +2,7 @@
 #include "filler.h"
 
 /*
-** Read the first line from STDIN and parse board or piece dimensions.
+** Read the first line from STDIN and parse board or piece dimensionsint.
 ** Skip all not integers, then parse first number using ft_atoi,
 ** then move the pointer to the end of the parsed aread and run ft_atoi
 ** once again to parse the second number.
@@ -31,53 +31,63 @@ static void	get_fil_object_size(int *x, int *y)
 ** a non numeric value, which will mean that we got to Piece dimensions.
 */
 
-static void	init_fil_board(t_fil_node	*fil)
+static int	init_fil_board(t_fil_struct *fil)
 {
 	char	*buff;
 	int		i;
 
 	i = 0;
-	fil->board = (char**)malloc(sizeof(char*) * (fil->b_y + 1));
+	if (!(fil->board = (char**)malloc(sizeof(char*) * (fil->b_y + 1))))
+		return (0);
 	get_next_line(STDIN_FILENO, &buff);
 	free(buff);
 	while (i < fil->b_y)
 	{
 		get_next_line(STDIN_FILENO, &buff);
-		fil->board[i++] = ft_strdup(buff + 4);
+		if (!(fil->board[i++] = ft_strdup(buff + 4)))
+			return (0);
 		free(buff);
 	}
 	fil->board[i] = NULL;
+	return (1);
+
 }
 
-static void	init_fil_piece(t_fil_node *fil)
+static int	init_fil_piece(t_fil_struct *fil)
 {
 	char	*buff;
 	int		i;
 
 	i = 0;
-	fil->piece = (char**)malloc(sizeof(char*) * (fil->p_y + 1));
+	if (!(fil->piece = (char**)malloc(sizeof(char*) * (fil->p_y + 1))))
+		return (0);
 	while (i < fil->p_y)
 	{
 		get_next_line(STDIN_FILENO, &buff);
-		fil->piece[i++] = ft_strdup(buff);
+		if (!(fil->piece[i++] = ft_strdup(buff)))
+			return (0);
 		free(buff);
 	}
 	fil->piece[i] = NULL;
+	return (1);
 }
 
-void	fill_out_fil(t_fil_node	*fil)
+int			fill_out_fil_struct(t_fil_struct *fil)
 {
 	get_fil_object_size(&fil->b_x, &fil->b_y);
-	init_fil_board(fil);
+	if (!(init_fil_board(fil)))
+		return (0);
 	get_fil_object_size(&fil->p_x, &fil->p_y);
-	init_fil_piece(fil);
+	if (!(init_fil_piece(fil)))
+		return (0);
+	return (1);
 }
 
 /*
 ** Get a character for each player;
 */
 
-void	get_fil_player_char(t_fil_node	*fil)
+void		get_fil_player_char(t_fil_struct *fil)
 {
 	char	*buff;
 	

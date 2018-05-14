@@ -17,46 +17,48 @@
 **	List with coordinates of the piece
 */
 
-typedef struct			s_p_coords
+typedef struct				s_coords_node
 {
-	int					x;
-	int					y;
-	struct	s_p_coords	*next;
-}						t_p_coords;
+	int						x;
+	int						y;
+	struct	s_coords_node	*next;
+}							t_coords_node;
 
-typedef struct	s_fil_node
+typedef struct		s_fil_struct
 {
-	char 		c_my;
-	char		c_enemy;
-	char		**board;
-	int			b_x;
-	int			b_y;
-	char		**piece;
-	int 		p_x;
-	int			p_y;
-	t_p_coords	*p_coords;
-	t_p_coords	*valid_coords;
-}				t_fil_node;
+	char 			c_my;
+	char			c_enemy;
+	char			**board;
+	int				b_x;
+	int				b_y;
+	char			**piece;
+	int 			p_x;
+	int				p_y;
+	t_coords_node	*p_coords;
+	t_coords_node	*valid_coords;
+}					t_fil_struct;
 
 /*
 ** Parsing and writing board and piece to the struct.
 */
 
-void	get_fil_player_char(t_fil_node	*fil);
-void	fill_out_fil(t_fil_node	*fil);
+void	get_fil_player_char(t_fil_struct *fil);
+int		fill_out_fil_struct(t_fil_struct *fil);
 
 /*
 ** Checking all valid possible coordinates for return. 
 */
 
-int		get_piece_coordintaes(char **piece, int x, int y, t_p_coords *coords);
+int		get_piece_coordintaes(t_fil_struct *fil, int x, int y);
 
 /*
 ** Additional functions
 */
 
-void	fil_print_board(t_fil_node	*fil);
-void	fil_print_piece(t_fil_node	*fil);
-void	fil_print_piece_coords(t_p_coords *coords);
+void	fil_print_board(t_fil_struct *fil);
+void	fil_print_piece(t_fil_struct *fil);
+void	fil_print_coords_list(t_coords_node *coords);
+void	delete_coords_struct(t_coords_node **coords);
+void	delete_fil_struct(t_fil_struct *fil);
 
 #endif
