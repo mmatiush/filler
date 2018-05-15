@@ -5,7 +5,7 @@ OBJ_DIR :=		./obj/
 INC_DIR :=		./libft/inc/
 
 SRC :=			mmatiush.filler.c fil_additional_func.c fil_parse.c \
-get_fil_player_char.c
+get_fil_player_char.c get_coordinates.c
 
 OBJ :=			$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 

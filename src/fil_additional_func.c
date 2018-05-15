@@ -6,6 +6,8 @@ void fil_print_board(t_fil_struct *fil)
 	int i = 0;
 	while (fil->board[i])
 		ft_printf("%s\n", fil->board[i++]);
+	ft_printf("\n");
+
 }
 
 void fil_print_piece(t_fil_struct *fil)
@@ -44,8 +46,7 @@ void	delete_fil_struct(t_fil_struct *fil)
 	fil->b_y = 0;
 	fil->p_x = 0;
 	fil->p_y = 0;
-	fil->p_x_shift = 0;
-	fil->p_y_shift = 0;
+
 }
 
 void	null_fil_struct(t_fil_struct *fil)
