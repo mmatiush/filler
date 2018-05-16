@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "filler.h"
 
-void fil_print_board(t_fil_struct *fil)
+void	print_board(t_fil_struct *fil)
 {
 	int i = 0;
 	while (fil->board[i])
@@ -10,14 +10,14 @@ void fil_print_board(t_fil_struct *fil)
 
 }
 
-void fil_print_piece(t_fil_struct *fil)
+void	print_piece(t_fil_struct *fil)
 {
 	int i = 0;
 	while (fil->piece[i])
 		ft_printf("%s\n", fil->piece[i++]);
 }
 
-void	fil_print_coords_list(t_coords_node *coords)
+void	print_coords_list(t_coords_node *coords)
 {
 	while (coords)
 	{
@@ -51,8 +51,10 @@ void	delete_fil_struct(t_fil_struct *fil)
 
 void	null_fil_struct(t_fil_struct *fil)
 {
-		fil->valid_coords = NULL;
-		fil->p_coords = NULL;
-		fil->board = NULL;
-		fil->piece = NULL;
+	fil->valid_coords = NULL;
+	fil->p_coords = NULL;
+	fil->board = NULL;
+	fil->piece = NULL;
+	fil->p_x_shift = 0;
+	fil->p_y_shift = 0;
 }

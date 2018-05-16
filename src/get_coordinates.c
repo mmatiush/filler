@@ -63,14 +63,14 @@ int		get_valid_placing_coordinates(t_fil_struct *fil)
 	int j;
 	int max_x;
 	int max_y;
-	
+
 	i = 0;
 	max_x = fil->b_x - fil->p_x;
 	max_y = fil->b_y - fil->p_y;
-	while (i < max_y)
+	while (i <= max_y)
 	{
 		j = 0;
-		while (j < max_x)
+		while (j <= max_x)
 		{
 			if (check_if_coord_valid(fil, j, i))
 				add_valid_coord(&fil->valid_coords, j, i);

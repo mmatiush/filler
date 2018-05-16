@@ -72,32 +72,6 @@ static int	init_fil_piece(t_fil_struct *fil)
 	return (1);
 }
 
-// void	get_piece_shift(t_fil_struct *fil)
-// {
-// 	int		i;
-// 	int 	j;
-// 	int		flag;
-// 	flag = 0;
-// 	i = 0;
-// 	while (i < fil->p_y)
-// 	{
-// 		j = 0;
-// 		while (j < fil->p_x)
-// 		{
-// 			if (fil->piece[i][j] == '*')
-// 			{
-// 				flag = 1;
-// 				break ;
-// 			}
-// 			j++;
-// 		}
-// 		if (flag == 1)
-// 			break ;
-// 		fil->p_y_shift++;
-// 		i++;
-// 	}
-// }
-
 int			fill_out_fil_struct(t_fil_struct *fil)
 {
 	get_fil_object_size(&fil->b_x, &fil->b_y);

@@ -34,10 +34,12 @@ typedef struct		s_fil_struct
 	char			**piece;
 	int 			p_x;
 	int				p_y;
-	int				x;
-	int				y;
+	int				return_x;
+	int				return_y;
 	t_coords_node	*p_coords;
 	t_coords_node	*valid_coords;
+	int				p_x_shift;
+	int				p_y_shift;
 }					t_fil_struct;
 
 /*
@@ -52,17 +54,19 @@ int		fill_out_fil_struct(t_fil_struct *fil);
 */
 
 int		get_piece_coordintaes(t_fil_struct *fil, int x, int y);
+int		get_valid_placing_coordinates(t_fil_struct *fil);
+void	move_piece_coords_left_up(t_fil_struct *fil);
+
 
 /*
 ** Additional functions
 */
 
-void	fil_print_board(t_fil_struct *fil);
-void	fil_print_piece(t_fil_struct *fil);
-void	fil_print_coords_list(t_coords_node *coords);
+void	print_board(t_fil_struct *fil);
+void	print_piece(t_fil_struct *fil);
+void	print_coords_list(t_coords_node *coords);
 void	delete_coords_struct(t_coords_node **coords);
 void	null_fil_struct(t_fil_struct *fil);
 void	delete_fil_struct(t_fil_struct *fil);
-int		get_valid_placing_coordinates(t_fil_struct *fil);
 
 #endif

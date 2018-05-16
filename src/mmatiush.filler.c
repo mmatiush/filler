@@ -1,82 +1,82 @@
 #include "libft.h"
 #include "filler.h"
 
-int		fil_put_index(t_fil_struct *fil, char **board, int i, int j, char index)
-{
-	if (j >= 1 && board[i][j - 1] == '.')
-		board[i][j - 1] = index++;
-	if (j >= 1 && i >= 1 && board[i - 1][j - 1] == '.')
-		board[i - 1][j - 1] = index++;
-	if (i >= 1 && board[i - 1][j] == '.')
-		board[i - 1][j] = index++;
-	if (i >= 1 && j < fil->b_x - 1 && board[i - 1][j + 1] == '.')
-		board[i - 1][j + 1] = index++;
-	if (j < fil->b_x - 1 && board[i][j + 1] == '.')
-		board[i][j + 1] = index++;
-	if (i < fil->b_y - 1 && j < fil->b_x - 1 && board[i + 1][j + 1] == '.')
-		board[i + 1][j + 1] = index++;
-	if (i < fil->b_y - 1 && board[i + 1][j] == '.')
-		board[i + 1][j] = index++;
-	if (j >= 1 && i < fil->b_y - 1 && board[i + 1][j - 1] == '.')
-		board[i + 1][j - 1] = index++;
-}
+// int		fil_put_index(t_fil_struct *fil, char **board, int i, int j, char index)
+// {
+// 	if (j >= 1 && board[i][j - 1] == '.')
+// 		board[i][j - 1] = index++;
+// 	if (j >= 1 && i >= 1 && board[i - 1][j - 1] == '.')
+// 		board[i - 1][j - 1] = index++;
+// 	if (i >= 1 && board[i - 1][j] == '.')
+// 		board[i - 1][j] = index++;
+// 	if (i >= 1 && j < fil->b_x - 1 && board[i - 1][j + 1] == '.')
+// 		board[i - 1][j + 1] = index++;
+// 	if (j < fil->b_x - 1 && board[i][j + 1] == '.')
+// 		board[i][j + 1] = index++;
+// 	if (i < fil->b_y - 1 && j < fil->b_x - 1 && board[i + 1][j + 1] == '.')
+// 		board[i + 1][j + 1] = index++;
+// 	if (i < fil->b_y - 1 && board[i + 1][j] == '.')
+// 		board[i + 1][j] = index++;
+// 	if (j >= 1 && i < fil->b_y - 1 && board[i + 1][j - 1] == '.')
+// 		board[i + 1][j - 1] = index++;
+// }
 
-int		check_board_dots(t_fil_struct *fil)
-{
-	int i;
-	int j;
+// int		check_board_dots(t_fil_struct *fil)
+// {
+// 	int i;
+// 	int j;
 
-	i = 0;
-	while (i < fil->b_y)
-	{
-		j = 0;
-		while (j < fil->b_x)
-		{
-			if (fil->board[i][j] == '.')
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
+// 	i = 0;
+// 	while (i < fil->b_y)
+// 	{
+// 		j = 0;
+// 		while (j < fil->b_x)
+// 		{
+// 			if (fil->board[i][j] == '.')
+// 				return (1);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
-void	fil_index_board(t_fil_struct *fil)
-{
-	int i;
-	int j;
-	int index1;
-	int index2;
-	int temp;
-	int flag;
+// void	fil_index_board(t_fil_struct *fil)
+// {
+// 	int i;
+// 	int j;
+// 	int index1;
+// 	int index2;
+// 	int temp;
+// 	int flag;
 
-	index1 = '*';
-	index2 = '#';
-	while (check_board_dots(fil))
-	{
-		flag = 0;
-		i = 0;
-		while (i < fil->b_y)
-		{
-			j = 0;
-			while (j < fil->b_x)
-			{
-				if (fil->board[i][j] == fil->c_enemy || fil->board[i][j] == index1)
-				{
-					flag = fil_put_index(fil, fil->board, i, j, index2);
-					flag = 1;
-				}
-				j++;
-			}
-			i++;
-		}
-		if (flag == 0)
-			return ;
-		temp = index1;
-		index1 = index2;
-		index2 = temp;
-	}
-}
+// 	index1 = '*';
+// 	index2 = '#';
+// 	while (check_board_dots(fil))
+// 	{
+// 		flag = 0;
+// 		i = 0;
+// 		while (i < fil->b_y)
+// 		{
+// 			j = 0;
+// 			while (j < fil->b_x)
+// 			{
+// 				if (fil->board[i][j] == fil->c_enemy || fil->board[i][j] == index1)
+// 				{
+// 					flag = fil_put_index(fil, fil->board, i, j, index2);
+// 					flag = 1;
+// 				}
+// 				j++;
+// 			}
+// 			i++;
+// 		}
+// 		if (flag == 0)
+// 			return ;
+// 		temp = index1;
+// 		index1 = index2;
+// 		index2 = temp;
+// 	}
+// }
 
 // int		check_enemy_by_coords(t_fil_struct *fil, int i, int j, int r, char **board)
 // {
@@ -138,6 +138,8 @@ void	fil_index_board(t_fil_struct *fil)
 // 	}
 // }
 
+
+
 int		main(void)
 {
 	t_fil_struct	fil;
@@ -150,16 +152,16 @@ int		main(void)
 			return (0);
 		if (!(get_piece_coordintaes(&fil, fil.p_x, fil.p_y)))
 			return (0);
+		move_piece_coords_left_up(&fil);
 		if (!(get_valid_placing_coordinates(&fil)))
 			return (0);
+		
 		ft_printf("MY - %c\n", fil.c_my);
 		ft_printf("ENEMY - %c\n", fil.c_enemy);
 		ft_printf("VALID_COORDS\n");
-		fil_print_coords_list(fil.valid_coords);
-		ft_printf("PIECE_COORDS\n");
-		fil_print_coords_list(fil.p_coords);
+		print_coords_list(fil.valid_coords);
 		// if (fil.valid_coords)
-		// 	ft_printf("%d %d\n", fil.valid_coords->x, fil.valid_coords->y);
+		// 	ft_printf("%d %d\n", fil.valid_coords->x + fil.p_x_shift, fil.valid_coords->y + fil.p_y_shift);
 		// else
 		// {
 		// 	ft_printf("0 0\n");
