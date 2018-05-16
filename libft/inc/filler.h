@@ -34,8 +34,6 @@ typedef struct		s_fil_struct
 	char			**piece;
 	int 			p_x;
 	int				p_y;
-	int				return_x;
-	int				return_y;
 	t_coords_node	*p_coords;
 	t_coords_node	*valid_coords;
 	int				p_x_shift;

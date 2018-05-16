@@ -152,22 +152,26 @@ int		main(void)
 			return (0);
 		if (!(get_piece_coordintaes(&fil, fil.p_x, fil.p_y)))
 			return (0);
+		// print_coords_list(fil.p_coords);
 		move_piece_coords_left_up(&fil);
+		// print_coords_list(fil.p_coords);
 		if (!(get_valid_placing_coordinates(&fil)))
 			return (0);
+		// print_coords_list(fil.valid_coords);
 		
-		ft_printf("MY - %c\n", fil.c_my);
-		ft_printf("ENEMY - %c\n", fil.c_enemy);
-		ft_printf("VALID_COORDS\n");
-		print_coords_list(fil.valid_coords);
-		// if (fil.valid_coords)
-		// 	ft_printf("%d %d\n", fil.valid_coords->x + fil.p_x_shift, fil.valid_coords->y + fil.p_y_shift);
-		// else
-		// {
-		// 	ft_printf("0 0\n");
-		// 	delete_fil_struct(&fil);
-		// 	return (0);
-		// }
+		// ft_printf("MY - %c\n", fil.c_my);
+		// ft_printf("ENEMY - %c\n", fil.c_enemy);
+		// ft_printf("VALID_COORDS\n");
+		// print_coords_list(fil.valid_coords);
+		//ft_printf("fil.valid_coords->y (%d) + fil.p_y_shift (%d), fil.valid_coords->x (%d) + fil.p_x_shift (%d)\n", fil.valid_coords->y, fil.p_y_shift, fil.valid_coords->x, fil.p_x_shift);
+		if (fil.valid_coords)
+			ft_printf("%d %d\n", fil.valid_coords->y - fil.p_y_shift, fil.valid_coords->x - fil.p_x_shift);
+		else
+		{
+			ft_printf("0 0\n");
+			delete_fil_struct(&fil);
+			return (0);
+		}
 		delete_fil_struct(&fil);
 	}
 	//system ("leaks --quiet mmatiush.filler");

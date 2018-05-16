@@ -80,6 +80,5 @@ int			fill_out_fil_struct(t_fil_struct *fil)
 	get_fil_object_size(&fil->p_x, &fil->p_y);
 	if (!(init_fil_piece(fil)))
 		return (0);
-	// get_piece_shift(fil);
 	return (1);
 }
