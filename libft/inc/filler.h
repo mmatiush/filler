@@ -66,5 +66,6 @@ void	print_coords_list(t_coords_node *coords);
 void	delete_coords_struct(t_coords_node **coords);
 void	null_fil_struct(t_fil_struct *fil);
 void	delete_fil_struct(t_fil_struct *fil);
+void	print_int_board(t_fil_struct *fil);
 
 #endif

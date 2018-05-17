@@ -1,24 +1,24 @@
 #include "libft.h"
 #include "filler.h"
 
-// int		fil_put_index(t_fil_struct *fil, char **board, int i, int j, char index)
+// void	place_index(t_fil_struct *fil, char **board, int i, int j, char index)
 // {
 // 	if (j >= 1 && board[i][j - 1] == '.')
-// 		board[i][j - 1] = index++;
+// 		board[i][j - 1] = index;
 // 	if (j >= 1 && i >= 1 && board[i - 1][j - 1] == '.')
-// 		board[i - 1][j - 1] = index++;
+// 		board[i - 1][j - 1] = index;
 // 	if (i >= 1 && board[i - 1][j] == '.')
-// 		board[i - 1][j] = index++;
+// 		board[i - 1][j] = index;
 // 	if (i >= 1 && j < fil->b_x - 1 && board[i - 1][j + 1] == '.')
-// 		board[i - 1][j + 1] = index++;
+// 		board[i - 1][j + 1] = index;
 // 	if (j < fil->b_x - 1 && board[i][j + 1] == '.')
-// 		board[i][j + 1] = index++;
+// 		board[i][j + 1] = index;
 // 	if (i < fil->b_y - 1 && j < fil->b_x - 1 && board[i + 1][j + 1] == '.')
-// 		board[i + 1][j + 1] = index++;
+// 		board[i + 1][j + 1] = index;
 // 	if (i < fil->b_y - 1 && board[i + 1][j] == '.')
-// 		board[i + 1][j] = index++;
+// 		board[i + 1][j] = index;
 // 	if (j >= 1 && i < fil->b_y - 1 && board[i + 1][j - 1] == '.')
-// 		board[i + 1][j - 1] = index++;
+// 		board[i + 1][j - 1] = index;
 // }
 
 // int		check_board_dots(t_fil_struct *fil)
@@ -41,109 +41,58 @@
 // 	return (0);
 // }
 
-// void	fil_index_board(t_fil_struct *fil)
+// void		check_idex(t_fil_struct *fil, int i, int j, int index)
+// {
+// 	int falg;
+
+// 	flag = 0;
+// 	if (index == 'O' || index == 'o' || index == 'X' || index == 'x' || index == '.')
+// 	{
+// 		flag = 1;
+// 		index++;
+// 	}
+// 	if (flag == 1 && fil->board[i][j] == index - 2)
+// 		place_index(fil, fil->board, i, j, index);
+// 	else if (flag == 0 && fil->board[i][j] == index - 1)
+// 		place_index(fil, fil->board, i, j, index);
+// 	else if (fil->board[i][j] == fil->c_enemy || fil->board[i][j] == fil->c_enemy + 32)
+// 		place_index(fil, fil->board, i, j, index);
+// }
+
+// void	search_closest_valid_point(t_fil_struct *fil)
 // {
 // 	int i;
 // 	int j;
-// 	int index1;
-// 	int index2;
-// 	int temp;
-// 	int flag;
+// 	int index;
 
-// 	index1 = '*';
-// 	index2 = '#';
-// 	while (check_board_dots(fil))
+// 	index = 0;
+// 	while (check_board_dots(fil) && index <= 255)
 // 	{
-// 		flag = 0;
+// 		print_board(fil);
 // 		i = 0;
 // 		while (i < fil->b_y)
 // 		{
 // 			j = 0;
 // 			while (j < fil->b_x)
 // 			{
-// 				if (fil->board[i][j] == fil->c_enemy || fil->board[i][j] == index1)
-// 				{
-// 					flag = fil_put_index(fil, fil->board, i, j, index2);
-// 					flag = 1;
-// 				}
+// 				check_idex(fil, i, j, index);
 // 				j++;
 // 			}
 // 			i++;
 // 		}
-// 		if (flag == 0)
-// 			return ;
-// 		temp = index1;
-// 		index1 = index2;
-// 		index2 = temp;
+// 		index++;
 // 	}
 // }
-
-// int		check_enemy_by_coords(t_fil_struct *fil, int i, int j, int r, char **board)
-// {
-// 	if (j >= r && fil->board[i][j - r] == fil->c_enemy)
-// 		return (1);
-// 	if (j >= r && i >= r && fil->board[i - r][j - r] == fil->c_enemy)
-// 		return (1);
-// 	if (i >= r && fil->board[i - r][j] == fil->c_enemy)
-// 		return (1);
-// 	if (i >= r && j < fil->b_x - r && fil->board[i - r][j + r] == fil->c_enemy)
-// 		return (1);
-// 	if (j < fil->b_x - r && fil->board[i][j + r] == fil->c_enemy)
-// 		return (1);
-// 	if (i < fil->b_y - r && j < fil->b_x - r && fil->board[i + r][j + r] == fil->c_enemy)
-// 		return (1);
-// 	if (i < fil->b_y - r && fil->board[i + r][j] == fil->c_enemy)
-// 		return (1);
-// 	if (j > r && i < fil->b_y - r && fil->board[i + r][j - r] == fil->c_enemy)
-// 		return (1);
-// }
-
-// int		check_enemy_by_coords(t_fil_struct *fil, int i, int j, int r, char **board)
-// {
-// 	int left = j - r;
-// 	int top = i - r;
-// 	int right = r + j;
-// 	int bottom = r + i;
-
-// 	int k = 0;
-// 	while (left + k <= right)
-// 	{
-// 		if ()
-// 		k++;
-// 	}
-
-// }
-
-// void	find_closest_enemy_point(t_fil_struct *fil)
-// {
-// 	t_coords_node *coords;
-// 	int radius;
-
-// 	radius = 1;
-// 	if (fil->valid_coords)
-// 	{
-// 		while (radius < fil->b_x - fil->p_x || radius < fil->b_y - fil->p_y)
-// 		{
-// 			coords = fil->valid_coords;
-// 			while (coords)
-// 			{
-// 				if (check_enemy_by_coords(fil, coords->x, coords->y, radius, fil->board))
-// 				{
-// 					return ;
-// 				}
-// 				coords = coords->next;
-// 			}
-// 			radius++;					 
-// 		}
-// 	}
-// }
-
-
 
 int		main(void)
 {
 	t_fil_struct	fil;
-
+	int i = 0;
+	char c = 0;
+	while (i <= 256)
+	{
+		ft_printf("%d [%d]\n", i++, c++);
+	}
 	null_fil_struct(&fil);
 	get_fil_player_char(&fil);
 	while (1)
@@ -157,21 +106,16 @@ int		main(void)
 		// print_coords_list(fil.p_coords);
 		if (!(get_valid_placing_coordinates(&fil)))
 			return (0);
-		// print_coords_list(fil.valid_coords);
-		
-		// ft_printf("MY - %c\n", fil.c_my);
-		// ft_printf("ENEMY - %c\n", fil.c_enemy);
-		// ft_printf("VALID_COORDS\n");
-		// print_coords_list(fil.valid_coords);
-		//ft_printf("fil.valid_coords->y (%d) + fil.p_y_shift (%d), fil.valid_coords->x (%d) + fil.p_x_shift (%d)\n", fil.valid_coords->y, fil.p_y_shift, fil.valid_coords->x, fil.p_x_shift);
-		if (fil.valid_coords)
-			ft_printf("%d %d\n", fil.valid_coords->y - fil.p_y_shift, fil.valid_coords->x - fil.p_x_shift);
-		else
-		{
-			ft_printf("0 0\n");
-			delete_fil_struct(&fil);
-			return (0);
-		}
+		print_board(&fil);
+		print_int_board(&fil);
+		// search_closest_valid_point(&fil);
+		// if (fil.valid_coords)
+		// 	ft_printf("%d %d\n", fil.valid_coords->y - fil.p_y_shift, fil.valid_coords->x - fil.p_x_shift);
+		// else
+		// {
+		// 	ft_printf("0 0\n");
+		// 	delete_fil_struct(&fil);
+		// 	return (0);
 		delete_fil_struct(&fil);
 	}
 	//system ("leaks --quiet mmatiush.filler");

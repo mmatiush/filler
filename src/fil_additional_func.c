@@ -10,6 +10,24 @@ void	print_board(t_fil_struct *fil)
 
 }
 
+void	print_int_board(t_fil_struct *fil)
+{
+	int i = 0;
+	int j;
+	while (i < fil->b_y)
+	{
+		j = 0;
+		while (j < fil->b_x)
+		{
+			ft_printf("|%d", fil->board[i][j]);
+			j++;
+		}
+		i++;
+		ft_printf("\n");
+	}
+	ft_printf("\n");
+}
+
 void	print_piece(t_fil_struct *fil)
 {
 	int i = 0;
