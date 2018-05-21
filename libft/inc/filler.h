@@ -13,10 +13,6 @@
 #ifndef FILLER_H
 # define FILLER_H
 
-/*
-**	List with coordinates of the piece
-*/
-
 typedef struct				s_coords_node
 {
 	int						x;
@@ -38,6 +34,7 @@ typedef struct		s_fil_struct
 	t_coords_node	*valid_coords;
 	int				p_x_shift;
 	int				p_y_shift;
+	t_coords_node	result;
 }					t_fil_struct;
 
 /*

@@ -19,7 +19,7 @@ void	print_int_board(t_fil_struct *fil)
 		j = 0;
 		while (j < fil->b_x)
 		{
-			ft_printf("|%d", fil->board[i][j]);
+			ft_printf("|%4d", fil->board[i][j]);
 			j++;
 		}
 		i++;
@@ -66,6 +66,8 @@ void	delete_fil_struct(t_fil_struct *fil)
 	fil->p_y = 0;
 	fil->p_x_shift = 0;
 	fil->p_y_shift = 0;
+	fil->result.x = 0;
+	fil->result.y = 0;
 }
 
 void	null_fil_struct(t_fil_struct *fil)
@@ -80,4 +82,6 @@ void	null_fil_struct(t_fil_struct *fil)
 	fil->p_y = 0;
 	fil->p_x_shift = 0;
 	fil->p_y_shift = 0;
+	fil->result.x = 0;
+	fil->result.y = 0;
 }
