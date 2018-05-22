@@ -24,6 +24,8 @@ typedef struct		s_fil_struct
 {
 	char 			c_my;
 	char			c_enemy;
+	char			c_my_updated;
+	char 			c_enemy_updated;
 	char			**board;
 	int				b_x;
 	int				b_y;

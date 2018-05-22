@@ -67,7 +67,7 @@ void	index_board(t_fil_struct *fil)
 			j = 0;
 			while (j < fil->b_x)
 			{
-				if (fil->board[i][j] == fil->c_enemy || fil->board[i][j] == index - 1)
+				if (fil->board[i][j] == fil->c_enemy_updated || fil->board[i][j] == index - 1)
 					flag += place_index(fil, i, j, index);
 				j++;
 			}
@@ -80,17 +80,32 @@ void	index_board(t_fil_struct *fil)
 }
 
 /*
-** On the board, substitute all '.' with 0, all 'x' and 'X' with 1, and
-** 'o'and 'O' with 2, to prepare it for placing indexes on the board.
-** c_my and c_enemy char in fil structure are replaced respectively.
+** Substitute all '.' with 0, all 'x' and 'X' with 1, and
+** 'o'and 'O' with 2, to prepare the board for placing indexes.
 */
 
-void	edit_enemy_and_my_char(t_fil_struct *fil)
-{
-	fil->c_my = (fil->c_my == 'X') ? 1 : 2;
-	fil->c_enemy = (fil->c_enemy == 'X') ? 1 : 2;
+// void	prepare_board(t_fil_struct *fil)
+// {
+// 	int i;
+// 	int j;
 
-}
+// 	i = 0;
+// 	while(i < fil->b_y)
+// 	{
+// 		j = 0;
+// 		while (j < fil->b_x)
+// 		{
+// 			if (fil->board[i][j] ==  '.')
+// 				fil->board[i][j] = 0;
+// 			else if (fil->board[i][j] == 'x' || fil->board[i][j] == 'X')
+// 				fil->board[i][j] = 1;
+// 			else if (fil->board[i][j] == 'o' || fil->board[i][j] == 'O')
+// 				fil->board[i][j] = 2;
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
 
 void	prepare_board(t_fil_struct *fil)
 {
@@ -105,15 +120,14 @@ void	prepare_board(t_fil_struct *fil)
 		{
 			if (fil->board[i][j] ==  '.')
 				fil->board[i][j] = 0;
-			else if (fil->board[i][j] == 'x' || fil->board[i][j] == 'X')
+			else if (fil->board[i][j] == fil->c_my || fil->board[i][j] == fil->c_my + 32)
+				fil->board[i][j] = 0;
+			else if (fil->board[i][j] == fil->c_enemy || fil->board[i][j] == fil->c_enemy + 32)
 				fil->board[i][j] = 1;
-			else if (fil->board[i][j] == 'o' || fil->board[i][j] == 'O')
-				fil->board[i][j] = 2;
 			j++;
 		}
 		i++;
 	}
-	edit_enemy_and_my_char(fil);
 }
 
 void	get_closest_valid_point(t_fil_struct *fil)
@@ -129,7 +143,7 @@ void	get_closest_valid_point(t_fil_struct *fil)
 	distance = fil->board[valid_coords->y][valid_coords->x];
 	while ((valid_coords = valid_coords->next))
 	{
-		if (fil->board[valid_coords->y][valid_coords->x] < distance)
+		if (fil->board[valid_coords->y][valid_coords->x] <= distance)
 		{
 			fil->result.y = valid_coords->y;
 			fil->result.x = valid_coords->x;
@@ -151,21 +165,22 @@ int		main(void)
 			return (0);
 		// print_coords_list(fil.p_coords);
 		move_piece_coords_left_up(&fil);
-		print_coords_list(fil.p_coords);
+		// print_coords_list(fil.p_coords);
 		if (!(get_valid_placing_coordinates(&fil)))
 			return (0);
-		print_coords_list(fil.valid_coords);
+		// print_coords_list(fil.valid_coords);
 		// print_board(&fil);
 		// ft_printf("c_my [%c] ", fil.c_my);
 		// ft_printf("c_ enemy [%c]\n", fil.c_enemy);
 		prepare_board(&fil);
 		// ft_printf("c_my [%i] ", fil.c_my);
 		// ft_printf("c_ enemy [%i]\n", fil.c_enemy);
-		print_int_board(&fil);
+		// print_int_board(&fil);
 		index_board(&fil);
-		print_int_board(&fil);
+		// print_int_board(&fil);
 		// print_int_board(&fil);
 		get_closest_valid_point(&fil);
+		// ft_printf("PRE RES %d %d\n", fil.result.y, fil.result.x);
 		if (fil.valid_coords)
 			ft_printf("%d %d\n", fil.result.y - fil.p_y_shift, fil.result.x - fil.p_x_shift);
 		else

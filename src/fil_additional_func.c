@@ -14,18 +14,35 @@ void	print_int_board(t_fil_struct *fil)
 {
 	int i = 0;
 	int j;
+	int k;
+	int l;
+
+	k = 0;
+	l = 0;
+	ft_printf("   ");
+	while (k < 100)
+		ft_printf("|%2d", k++);
+	ft_printf("\n\n");
 	while (i < fil->b_y)
 	{
+		ft_printf("%2d ", l);
 		j = 0;
 		while (j < fil->b_x)
 		{
-			ft_printf("|%4d", fil->board[i][j]);
+			ft_printf("|%2d", fil->board[i][j]);
 			j++;
 		}
 		i++;
+		l++;
 		ft_printf("\n");
 	}
 	ft_printf("\n");
+	k = 0;
+	ft_printf("   ");
+	while (k < 100)
+		ft_printf("|%2d", k++);
+	ft_printf("\n");
+
 }
 
 void	print_piece(t_fil_struct *fil)
@@ -76,6 +93,10 @@ void	null_fil_struct(t_fil_struct *fil)
 	fil->p_coords = NULL;
 	fil->board = NULL;
 	fil->piece = NULL;
+	fil->c_my = 0;
+	fil->c_enemy = 0;
+	fil->c_my_updated = 0;
+	fil->c_enemy_updated = 0;
 	fil->b_x = 0;
 	fil->b_y = 0;
 	fil->p_x = 0;
