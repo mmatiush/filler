@@ -8,4 +8,4 @@ sed "s|O|$green|g" |
 sed "s|X|$magenta|g" |
 sed "s|x|$light_magenta|g" |
 sed "s|o|$light_green|g" |
-sed "s|.|$yellow|g"
+sed "s|fin|$yellow|g"

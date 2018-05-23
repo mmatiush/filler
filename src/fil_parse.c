@@ -13,15 +13,19 @@ static void	get_fil_object_size(int *x, int *y)
 	char	*buff;
 	char	*buff_ptr;
 
+	buff = NULL;
 	get_next_line(STDIN_FILENO, &buff);
 	buff_ptr = buff;
-	while (!ft_isdigit(*buff))
-		buff++;
-	*y = ft_atoi(buff);
-	while (ft_isdigit(*buff))
-		buff++;
-	*x = ft_atoi(buff);
-	free(buff_ptr);
+	if (buff_ptr)
+	{
+		while (!ft_isdigit(*buff))
+			buff++;
+		*y = ft_atoi(buff);
+		while (ft_isdigit(*buff))
+			buff++;
+		*x = ft_atoi(buff);
+		free(buff_ptr);
+	}
 }
 
 
@@ -36,17 +40,24 @@ static int	init_fil_board(t_fil_struct *fil)
 	char	*buff;
 	int		i;
 
+	buff = NULL;
 	i = 0;
 	if (!(fil->board = (char**)malloc(sizeof(char*) * (fil->b_y + 1))))
 		return (0);
 	get_next_line(STDIN_FILENO, &buff);
-	free(buff);
+	if (buff)
+	{
+		free(buff);
+	}
 	while (i < fil->b_y)
 	{
 		get_next_line(STDIN_FILENO, &buff);
-		if (!(fil->board[i++] = ft_strdup(buff + 4)))
-			return (0);
-		free(buff);
+		if (buff)
+		{
+			if (!(fil->board[i++] = ft_strdup(buff + 4)))
+				return (0);
+			free(buff);
+		}
 	}
 	fil->board[i] = NULL;
 	return (1);
@@ -58,15 +69,19 @@ static int	init_fil_piece(t_fil_struct *fil)
 	char	*buff;
 	int		i;
 
+	buff = NULL;
 	i = 0;
 	if (!(fil->piece = (char**)malloc(sizeof(char*) * (fil->p_y + 1))))
 		return (0);
 	while (i < fil->p_y)
 	{
 		get_next_line(STDIN_FILENO, &buff);
-		if (!(fil->piece[i++] = ft_strdup(buff)))
-			return (0);
-		free(buff);
+		if (buff)
+		{
+			if (!(fil->piece[i++] = ft_strdup(buff)))
+				return (0);
+			free(buff);
+		}
 	}
 	fil->piece[i] = NULL;
 	return (1);
