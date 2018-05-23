@@ -50,7 +50,7 @@ static int	line_read(char **line, char **leftover, int fd)
 
 int			gln_del_lines(char **line, char **leftover)
 {
-	free(*line);
+	free(*leftover);
 	*line = NULL;
 	*leftover = NULL;
 	return (1);
@@ -78,7 +78,7 @@ int			get_next_line(const int fd, char **line)
 	{
 		if (*leftover[fd] == 0 && gln_del_lines(&(*line), &leftover[fd]))
 			return (0);
-		leftover[fd] = 0;
+		leftover[fd] = NULL;
 		return (1);
 	}
 	return (-1);

@@ -186,12 +186,12 @@ int		main(void)
 		else
 		{
 			ft_printf("0 0\n");
-			system ("leaks --quiet mmatiush.filler");
 			delete_fil_struct(&fil);
+			// system ("leaks --quiet mmatiush.filler");
 			return (0);
 		}
 		delete_fil_struct(&fil);
-		system ("leaks --quiet mmatiush.filler");
+		// system ("leaks --quiet mmatiush.filler");
 	}
 	return (0);
 }
