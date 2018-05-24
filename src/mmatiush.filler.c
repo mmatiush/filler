@@ -79,34 +79,6 @@ void	index_board(t_fil_struct *fil)
 	}
 }
 
-/*
-** Substitute all '.' with 0, all 'x' and 'X' with 1, and
-** 'o'and 'O' with 2, to prepare the board for placing indexes.
-*/
-
-// void	prepare_board(t_fil_struct *fil)
-// {
-// 	int i;
-// 	int j;
-
-// 	i = 0;
-// 	while(i < fil->b_y)
-// 	{
-// 		j = 0;
-// 		while (j < fil->b_x)
-// 		{
-// 			if (fil->board[i][j] ==  '.')
-// 				fil->board[i][j] = 0;
-// 			else if (fil->board[i][j] == 'x' || fil->board[i][j] == 'X')
-// 				fil->board[i][j] = 1;
-// 			else if (fil->board[i][j] == 'o' || fil->board[i][j] == 'O')
-// 				fil->board[i][j] = 2;
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
-
 void	prepare_board(t_fil_struct *fil)
 {
 	int i;
@@ -118,9 +90,7 @@ void	prepare_board(t_fil_struct *fil)
 		j = 0;
 		while (j < fil->b_x)
 		{
-			if (fil->board[i][j] ==  '.')
-				fil->board[i][j] = 0;
-			else if (fil->board[i][j] == fil->c_my || fil->board[i][j] == fil->c_my + 32)
+			if (fil->board[i][j] ==  '.' || fil->board[i][j] == fil->c_my || fil->board[i][j] == fil->c_my + 32)
 				fil->board[i][j] = 0;
 			else if (fil->board[i][j] == fil->c_enemy || fil->board[i][j] == fil->c_enemy + 32)
 				fil->board[i][j] = 1;

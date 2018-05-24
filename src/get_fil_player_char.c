@@ -6,12 +6,6 @@
 ** It will be used for placing indexes.
 */
 
-// void	update_enemy_and_my_char(t_fil_struct *fil)
-// {
-// 	fil->c_my_updated = (fil->c_my == 'X') ? 1 : 2;
-// 	fil->c_enemy_updated = (fil->c_enemy == 'X') ? 1 : 2;
-// }
-
 void	update_enemy_and_my_char(t_fil_struct *fil)
 {
 	fil->c_my_updated = 2;
