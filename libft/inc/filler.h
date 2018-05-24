@@ -24,7 +24,6 @@ typedef struct		s_fil_struct
 {
 	char 			c_my;
 	char			c_enemy;
-	char			c_my_updated;
 	char 			c_enemy_updated;
 	char			**board;
 	int				b_x;
@@ -53,7 +52,7 @@ int		fill_out_fil_struct(t_fil_struct *fil);
 int		get_piece_coordintaes(t_fil_struct *fil, int x, int y);
 int		get_valid_placing_coordinates(t_fil_struct *fil);
 void	move_piece_coords_left_up(t_fil_struct *fil);
-
+void	index_board(t_fil_struct *fil);
 
 /*
 ** Additional functions

@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_coordinates.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatiush <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/24 14:43:27 by mmatiush          #+#    #+#             */
+/*   Updated: 2018/05/24 14:43:32 by mmatiush         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "filler.h"
 
-int		check_if_coord_valid(t_fil_struct *fil, int j, int i)
+static int	check_if_coord_valid(t_fil_struct *fil, int j, int i)
 {
 	int				my_point_flag;
 	t_coords_node	*p_coords;
@@ -26,7 +38,7 @@ int		check_if_coord_valid(t_fil_struct *fil, int j, int i)
 		return (0);
 }
 
-void	add_valid_coord(t_coords_node **coords, int j, int i)
+static void	add_valid_coord(t_coords_node **coords, int j, int i)
 {
 	t_coords_node *temp;
 
@@ -37,7 +49,7 @@ void	add_valid_coord(t_coords_node **coords, int j, int i)
 	*coords = temp;
 }
 
-int		get_piece_coordintaes(t_fil_struct *fil, int x, int y)
+int			get_piece_coordintaes(t_fil_struct *fil, int x, int y)
 {
 	int i;
 	int j;
@@ -57,7 +69,7 @@ int		get_piece_coordintaes(t_fil_struct *fil, int x, int y)
 	return (1);
 }
 
-int		get_valid_placing_coordinates(t_fil_struct *fil)
+int			get_valid_placing_coordinates(t_fil_struct *fil)
 {
 	int i;
 	int j;

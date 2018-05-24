@@ -5,11 +5,11 @@ OBJ_DIR :=		./obj/
 INC_DIR :=		./libft/inc/
 
 SRC :=			mmatiush.filler.c fil_additional_func.c fil_parse.c \
-get_fil_player_char.c get_coordinates.c move_piece_coords.c
+get_fil_player_char.c get_coordinates.c move_piece_coords.c index_board.c
 
 OBJ :=			$(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-CC :=			gcc -g
+CC :=			gcc
 CC_FLAGS :=		-Wall -Wextra -Werror
 
 LIBFT_DIR :=	./libft/
@@ -43,6 +43,7 @@ fclean:
 	@rm -rf $(OBJ_DIR)
 	@echo "Cleaning" [ $(NAME) ]
 	@make -C $(LIBFT_DIR) fclean
+	@rm -f filler.trace
 
 re: fclean all
 

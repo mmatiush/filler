@@ -29,7 +29,7 @@ LIBFT_OBJ :=	$(addprefix $(OBJ_DIR), $(LIBFT_SRC:.c=.o))
 
 CC_FLAGS :=		-Wall -Wextra -Werror
 
-CC :=			gcc -g
+CC :=			gcc
 
 all: $(NAME)
 

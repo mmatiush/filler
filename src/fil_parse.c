@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fil_parse.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmatiush <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/05/24 14:43:16 by mmatiush          #+#    #+#             */
+/*   Updated: 2018/05/24 14:43:18 by mmatiush         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "filler.h"
 
@@ -27,7 +39,6 @@ static void	get_fil_object_size(int *x, int *y)
 		free(buff_ptr);
 	}
 }
-
 
 /*
 ** Parse and drop the line with coloumn numbers.
@@ -61,7 +72,6 @@ static int	init_fil_board(t_fil_struct *fil)
 	}
 	fil->board[i] = NULL;
 	return (1);
-
 }
 
 static int	init_fil_piece(t_fil_struct *fil)
